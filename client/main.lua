@@ -187,17 +187,21 @@ RegisterNetEvent('elite-electrician:client:JobMarkers', function(k, v)
                         if #(pos - vector3(v.x, v.y, v.z)) < 1.5 then
                             DrawText3D(v.x, v.y, v.z, "~g~E~w~ - Поправи таблото")
                             if IsControlJustReleased(0, 38) then
+                                TriggerEvent('animations:client:EmoteCommandStart', {"weld"})
                                 exports['ps-ui']:Circle(function(success)
                                     if success then
                                         if CompleteRepairs <= 4 then
                                             exports['mythic_notify']:DoHudText('inform', 'Поправи това табло, давай към следващият сигнал!')
                                             TriggerServerEvent("elite-electrician:server:Reward"); 
                                             TriggerServerEvent("elite-electrician:server:Payslip");
+
                                         else 
                                             exports['mythic_notify']:DoHudText('inform', 'Работата е приключена! Върни се в централата ,за да оставиш автомобила!')
                                             TriggerServerEvent("elite-electrician:server:Payslip");
+
                                         end
                                         RemoveBlip(v.BlipId)
+                                        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
                                         table.remove(JobsinSession, k)
                                     else
                                         Tok()
