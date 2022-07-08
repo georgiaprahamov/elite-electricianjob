@@ -86,9 +86,10 @@ end)
 
 function Tok()
     local chance  = math.random(0,100)
+    if chance < 100 then
     TokAnim()
     exports['mythic_notify']:DoHudText('error', 'Удари те ток и те зашемети...!')
-    if chance < 2 then
+    elseif chance < 2 then
         exports['mythic_notify']:DoHudText('error', 'Тресна яко тока...!')
         TriggerEvent('hospital:client:KillPlayer', PlayerPedId())
     end
