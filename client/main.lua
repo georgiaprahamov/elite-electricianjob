@@ -88,9 +88,9 @@ function Tok()
     local chance  = math.random(0,100)
     if chance < 100 then
     TokAnim()
-    exports['mythic_notify']:DoHudText('error', 'Удари те ток и те зашемети...!')
+    exports['mythic_notify']:DoHudText('error', Lang:t("error.beware"))
     elseif chance < 2 then
-        exports['mythic_notify']:DoHudText('error', 'Тресна яко тока...!')
+        exports['mythic_notify']:DoHudText('error', Lang:t("error.buckle"))
         TriggerEvent('hospital:client:KillPlayer', PlayerPedId())
     end
 
@@ -120,8 +120,7 @@ CreateThread(function()
                 DrawMarker(2, Config.Locations["vehicle"].coords.x, Config.Locations["vehicle"].coords.y, Config.Locations["vehicle"].coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 200, 200, 222, false, false, false, true, false, false, false)
                 if #(pos - vector3(Config.Locations["vehicle"].coords.x, Config.Locations["vehicle"].coords.y, Config.Locations["vehicle"].coords.z)) < 1.5 then
                     if IsPedInAnyVehicle(PlayerPedId(), false) then
-                        DrawText3D(Config.Locations["vehicle"].coords.x, Config.Locations["vehicle"].coords.y, Config.Locations["vehicle"].coords.z, "~g~E~w~ - Прибери МПС")
-                        
+                        DrawText3D(Config.Locations["vehicle"].coords.x, Config.Locations["vehicle"].coords.y, Config.Locations["vehicle"].coords.z, Lang:t("info.store_veh"))
                     end
                     if IsControlJustReleased(0, 38) then
                         if IsPedInAnyVehicle(PlayerPedId(), false) then
@@ -132,10 +131,10 @@ CreateThread(function()
                                         RemoveBlip(v.BlipId)
                                     end
                                 else
-                                    exports['mythic_notify']:DoHudText('error', 'Това не е служебно МПС!')
+                                    exports['mythic_notify']:DoHudText('error', Lang:t("info.not_serv_veh"))
                                 end
                             else
-                                exports['mythic_notify']:DoHudText('error', 'Трябва да си шофьор на автомобила!')
+                                exports['mythic_notify']:DoHudText('error', Lang:t("info.driver"))
                             end
                         end
                     end  
@@ -169,7 +168,7 @@ end)
 function StartJobLocations()
     jobchoice = math.random(1,5)
     SetWorkBlip(jobchoice)
-    exports['mythic_notify']:DoHudText('inform', 'Сигналите са маркирани на GPS! Отиди и ги завърши!')
+    exports['mythic_notify']:DoHudText('inform', Lang:t("info.gps"))
 end
 
 -- Individual Job Site Interactions
@@ -186,18 +185,18 @@ RegisterNetEvent('elite-electrician:client:JobMarkers', function(k, v)
                         inRange = true
                         DrawMarker(2, v.x, v.y, v.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 200, 200, 222, false, false, false, true, false, false, false)
                         if #(pos - vector3(v.x, v.y, v.z)) < 1.5 then
-                            DrawText3D(v.x, v.y, v.z, "~g~E~w~ - Поправи таблото")
+                            DrawText3D(v.x, v.y, v.z, Lang:t("info.dashboard"))
                             if IsControlJustReleased(0, 38) then
                                 TriggerEvent('animations:client:EmoteCommandStart', {"weld"})
                                 exports['ps-ui']:Circle(function(success)
                                     if success then
                                         if CompleteRepairs <= 4 then
-                                            exports['mythic_notify']:DoHudText('inform', 'Поправи това табло, давай към следващият сигнал!')
+                                            exports['mythic_notify']:DoHudText('inform', Lang:t("info.nextd"))
                                             TriggerServerEvent("elite-electrician:server:Reward"); 
                                             TriggerServerEvent("elite-electrician:server:Payslip");
 
                                         else 
-                                            exports['mythic_notify']:DoHudText('inform', 'Работата е приключена! Върни се в централата ,за да оставиш автомобила!')
+                                            exports['mythic_notify']:DoHudText('inform', Lang:t("info.finished"))
                                             TriggerServerEvent("elite-electrician:server:Payslip");
 
                                         end
