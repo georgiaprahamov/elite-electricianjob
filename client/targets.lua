@@ -7,7 +7,7 @@ CreateThread(function()
                 type = "client",
                 event = "elite-electrician:client:VehPick",
                 icon = "fas fa-car",
-                label = "Изкарай автомобил",
+                label = Lang:t("info.pik"),
             },
             
         },
