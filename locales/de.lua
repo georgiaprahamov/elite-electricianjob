@@ -5,16 +5,16 @@ local Translations = {
 
     },
     success = {
-    reward = 'Erhalten $150 von diesem Signal!',
+        reward = 'Erhalten $150 von diesem Signal!',
 		material = 'Habe interessantes Material bekommen!',
 
     },
     info = {
 		pik = 'Nehmen Sie das Fahrzeug heraus',
-    store_veh = '~g~E~w~ - Nimm es weg Wagen',
-    not_serv_veh = 'Dies ist nicht das offizielle Fahrzeug',
-    driver = 'Sie müssen ein Fahrer sein!',
-    gps = 'Melden Sie sich für die GPS-Markierung an! Geh und beende sie!',
+        store_veh = '~g~E~w~ - Nimm es weg Wagen',
+        not_serv_veh = 'Dies ist nicht das offizielle Fahrzeug',
+        driver = 'Sie müssen ein Fahrer sein!',
+        gps = 'Melden Sie sich für die GPS-Markierung an! Geh und beende sie!',
 		dashboard = '~g~E~w~ - Repariere es',
 		nextd = 'Behoben - gehe zum nächsten Armaturenbrett!',
 		finished = 'Job erledigt! Kehre zum Hauptquartier zurück!',
